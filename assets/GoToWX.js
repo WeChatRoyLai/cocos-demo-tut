@@ -17,19 +17,24 @@ cc.Class({
         var node = event.target;
         
         if (window.engine) {
-          // 加载小游戏pro的场景
-          window.engine.loader.load('resource/mygame.scene').promise.then(function (scene) {
-            // 播放小游戏pro的场景
+          window.engine.loader.load('engineTutorial/cocosTutorial/wxEngineAssets/game3d.scene').promise.then(function (scene) {
+            // 播放微信小游戏pro的3d场景
             window.engine.game.playScene(scene)
-            // 将cocos的场景隐藏
-            node.parent.children.forEach(function(sub) {
-              const camera = sub.getComponent(cc.Camera)
-              if (camera) { // 相机active为true，清屏
-                return
-              }
-              sub.active = false
-            })
           })
+    
+          // 加载微信小游戏pro的2d场景
+          window.engine.loader.load('engineTutorial/cocosTutorial/wxEngineAssets/game2d.scene').promise.then(function (scene) {
+            // 播放微信小游戏pro的3d场景
+            window.engine.game.playScene(scene)
+          })
+
+          // node.parent.children.forEach(function(sub) {
+          //   const camera = sub.getComponent(cc.Camera)
+          //   if (camera) { // 相机active为true，清屏
+          //     return
+          //   }
+          //   sub.active = false
+          // })
         }
     }
   });
